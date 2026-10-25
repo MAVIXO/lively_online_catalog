@@ -1,0 +1,8 @@
+{
+  "name": "Lively Wallpaper Online Catalog",
+  "description": "Interactive online catalog, gallery, and live wallpaper simulator for Lively Wallpaper featuring interactive WebGL/HTML5 shaders, video wallpapers, multi-monitor display manager, and customizable properties.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
