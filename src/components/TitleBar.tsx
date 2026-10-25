@@ -1,10 +1,11 @@
 import React from 'react';
-import { Search, Sparkles, MonitorPlay, Activity, Minus, Square, X, RefreshCw } from 'lucide-react';
+import { Search, Sparkles, MonitorPlay, Activity, Minus, Square, X, Download } from 'lucide-react';
 
 interface TitleBarProps {
   searchQuery: string;
   onSearchChange: (query: string) => void;
   onOpenScreensaver: () => void;
+  onOpenInstaller: () => void;
   installedCount: number;
 }
 
@@ -12,6 +13,7 @@ export const TitleBar: React.FC<TitleBarProps> = ({
   searchQuery,
   onSearchChange,
   onOpenScreensaver,
+  onOpenInstaller,
   installedCount
 }) => {
   return (
@@ -43,7 +45,7 @@ export const TitleBar: React.FC<TitleBarProps> = ({
           <Search className="w-3.5 h-3.5 absolute left-3 text-neutral-400" />
           <input
             type="text"
-            placeholder="Search wallpapers, tags, authors, or styles..."
+            placeholder="Поиск обоев, тегов, авторов или стилей..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             className="w-full bg-[#2a2b30] text-xs text-white placeholder-neutral-400 pl-9 pr-3 py-1.5 rounded-md border border-white/10 focus:outline-none focus:border-[#0078d4] focus:ring-1 focus:ring-[#0078d4] transition-all"
@@ -60,7 +62,7 @@ export const TitleBar: React.FC<TitleBarProps> = ({
       </div>
 
       {/* Telemetry & Quick Action Tools */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         {/* Lively Live Telemetry Pill */}
         <div className="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] text-neutral-300">
           <Activity className="w-3 h-3 text-emerald-400 animate-pulse" />
@@ -70,14 +72,24 @@ export const TitleBar: React.FC<TitleBarProps> = ({
           <span className="text-sky-400 font-semibold font-mono">60 FPS</span>
         </div>
 
+        {/* Installer Quick Launch Button */}
+        <button
+          onClick={onOpenInstaller}
+          className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0078d4] hover:bg-[#1084d8] text-white text-xs font-semibold rounded-md shadow transition-all hover:scale-105"
+          title="Запустить мастер установки программы (Setup.exe)"
+        >
+          <Download className="w-3.5 h-3.5" />
+          <span className="hidden sm:inline">Установщик Setup.exe</span>
+        </button>
+
         {/* Screensaver Simulator Button */}
         <button
           onClick={onOpenScreensaver}
           className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0078d4]/15 hover:bg-[#0078d4]/25 text-[#0078d4] hover:text-[#2da1f8] text-xs font-medium rounded-md border border-[#0078d4]/40 transition-colors"
-          title="Simulate Windows Screensaver Mode"
+          title="Запустить режим заставки"
         >
           <MonitorPlay className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Screensaver</span>
+          <span className="hidden sm:inline">Заставка</span>
         </button>
 
         {/* Simulated Windows Window Controls */}

@@ -21,6 +21,8 @@ import { SubmitWallpaperModal } from './components/SubmitWallpaperModal';
 import { WeImportModal } from './components/WeImportModal';
 import { OnlineCatalogView } from './components/OnlineCatalogView';
 import { SettingsView } from './components/SettingsView';
+import { ReleasesView } from './components/ReleasesView';
+import { InstallerWizardModal } from './components/InstallerWizardModal';
 import {
   Sparkles,
   Filter,
@@ -86,6 +88,7 @@ export const App: React.FC = () => {
   const [screensaverWallpaper, setScreensaverWallpaper] = useState<Wallpaper | null>(null);
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
   const [isWeImportModalOpen, setIsWeImportModalOpen] = useState(false);
+  const [isInstallerWizardOpen, setIsInstallerWizardOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Sync state to local storage
@@ -187,6 +190,7 @@ export const App: React.FC = () => {
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         onOpenScreensaver={() => setScreensaverWallpaper(activeDesktopWallpaper)}
+        onOpenInstaller={() => setIsInstallerWizardOpen(true)}
         installedCount={installedCount}
       />
 
@@ -199,6 +203,7 @@ export const App: React.FC = () => {
           installedCount={installedCount}
           totalCatalogCount={wallpapers.length}
           onOpenWeImport={() => setIsWeImportModalOpen(true)}
+          onOpenInstallerWizard={() => setIsInstallerWizardOpen(true)}
         />
 
         {/* Content Viewport */}
@@ -409,6 +414,13 @@ export const App: React.FC = () => {
               onUpdateSettings={(newVals) => setSettings({ ...settings, ...newVals })}
             />
           )}
+
+          {/* TAB 7: RELEASES & INSTALLER CENTER */}
+          {currentTab === 'releases' && (
+            <ReleasesView
+              onOpenInstallerWizard={() => setIsInstallerWizardOpen(true)}
+            />
+          )}
         </main>
       </div>
 
@@ -447,6 +459,17 @@ export const App: React.FC = () => {
         <WeImportModal
           onClose={() => setIsWeImportModalOpen(false)}
           onImport={handleAddWallpaper}
+        />
+      )}
+
+      {/* Program Installer Wizard Modal (Inno Setup) */}
+      {isInstallerWizardOpen && (
+        <InstallerWizardModal
+          onClose={() => setIsInstallerWizardOpen(false)}
+          onLaunchApp={() => {
+            setCurrentTab('catalog');
+            showToast('Lively Wallpaper v2.1.0 запущен и готов к работе!');
+          }}
         />
       )}
 

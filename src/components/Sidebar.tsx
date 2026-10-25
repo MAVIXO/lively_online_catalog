@@ -8,10 +8,11 @@ import {
   Settings,
   ExternalLink,
   Layers,
-  Zap
+  Zap,
+  Download
 } from 'lucide-react';
 
-export type NavigationTab = 'catalog' | 'featured' | 'desktop' | 'library' | 'submit' | 'settings';
+export type NavigationTab = 'catalog' | 'featured' | 'desktop' | 'library' | 'submit' | 'settings' | 'releases';
 
 interface SidebarProps {
   currentTab: NavigationTab;
@@ -19,6 +20,7 @@ interface SidebarProps {
   installedCount: number;
   totalCatalogCount: number;
   onOpenWeImport: () => void;
+  onOpenInstallerWizard: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -26,7 +28,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onTabChange,
   installedCount,
   totalCatalogCount,
-  onOpenWeImport
+  onOpenWeImport,
+  onOpenInstallerWizard
 }) => {
   const navItems = [
     {
@@ -55,6 +58,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
       sublabel: 'My Library',
       icon: FolderHeart,
       count: installedCount
+    },
+    {
+      id: 'releases' as NavigationTab,
+      label: 'Релизы & Установщик',
+      sublabel: 'Setup & Downloads',
+      icon: Download,
+      badge: 'v2.1.0'
     },
     {
       id: 'submit' as NavigationTab,
@@ -121,8 +131,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
           );
         })}
 
-        {/* Wallpaper Engine Quick Import Button */}
-        <div className="pt-2">
+        {/* Quick Action Buttons */}
+        <div className="pt-2 space-y-1.5">
           <button
             onClick={onOpenWeImport}
             className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/25 text-sky-300 text-xs font-medium transition-colors"
@@ -133,6 +143,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
             <span className="text-[10px] font-mono bg-sky-500/20 px-1 py-0.2 rounded text-sky-200">
               Steam
+            </span>
+          </button>
+
+          <button
+            onClick={onOpenInstallerWizard}
+            className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-gradient-to-r from-[#0078d4]/20 to-sky-500/15 hover:from-[#0078d4]/30 hover:to-sky-500/25 border border-[#0078d4]/30 text-white text-xs font-medium transition-colors"
+          >
+            <div className="flex items-center gap-2">
+              <Download className="w-3.5 h-3.5 text-[#0078d4]" />
+              <span>Установщик Setup.exe</span>
+            </div>
+            <span className="text-[10px] font-mono bg-[#0078d4]/30 px-1.5 py-0.2 rounded text-sky-200">
+              Inno
             </span>
           </button>
         </div>
