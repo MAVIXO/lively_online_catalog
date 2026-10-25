@@ -21,6 +21,7 @@ interface SidebarProps {
   totalCatalogCount: number;
   onOpenWeImport: () => void;
   onOpenInstallerWizard: () => void;
+  onOpenLivelyExport: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -29,21 +30,29 @@ export const Sidebar: React.FC<SidebarProps> = ({
   installedCount,
   totalCatalogCount,
   onOpenWeImport,
-  onOpenInstallerWizard
+  onOpenInstallerWizard,
+  onOpenLivelyExport
 }) => {
   const navItems = [
     {
       id: 'catalog' as NavigationTab,
-      label: 'Онлайн каталог',
-      sublabel: 'Online Catalog',
+      label: 'Галерея',
+      sublabel: 'Онлайн каталог (5 источников)',
       icon: Globe,
-      badge: 'Мульти-источники',
+      badge: 'Вместо «Скоро»',
       count: totalCatalogCount
     },
     {
+      id: 'library' as NavigationTab,
+      label: 'Библиотека',
+      sublabel: 'Установленные обои',
+      icon: FolderHeart,
+      count: installedCount
+    },
+    {
       id: 'featured' as NavigationTab,
-      label: 'Главная & Топ',
-      sublabel: 'Featured',
+      label: 'Рекомендации',
+      sublabel: 'Топ недели',
       icon: Sparkles
     },
     {
@@ -51,13 +60,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
       label: 'Дисплеи и Мониторы',
       sublabel: 'Display Simulator',
       icon: Monitor
-    },
-    {
-      id: 'library' as NavigationTab,
-      label: 'Моя библиотека',
-      sublabel: 'My Library',
-      icon: FolderHeart,
-      count: installedCount
     },
     {
       id: 'releases' as NavigationTab,
@@ -156,6 +158,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
             <span className="text-[10px] font-mono bg-[#0078d4]/30 px-1.5 py-0.2 rounded text-sky-200">
               Inno
+            </span>
+          </button>
+
+          <button
+            onClick={onOpenLivelyExport}
+            className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/25 text-emerald-300 text-xs font-medium transition-colors"
+          >
+            <div className="flex items-center gap-2">
+              <FolderHeart className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Добавить в Lively на ПК</span>
+            </div>
+            <span className="text-[10px] font-mono bg-emerald-500/20 px-1.5 py-0.2 rounded text-emerald-200">
+              Гайд
             </span>
           </button>
         </div>

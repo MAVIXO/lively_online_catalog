@@ -13,7 +13,8 @@ import {
   ExternalLink,
   Flame,
   CheckCircle2,
-  HardDrive
+  HardDrive,
+  Folder
 } from 'lucide-react';
 
 interface OnlineCatalogViewProps {
@@ -26,6 +27,7 @@ interface OnlineCatalogViewProps {
   onVote: (wallpaper: Wallpaper) => void;
   onOpenWeImport: () => void;
   onOpenSubmit: () => void;
+  onOpenLivelyExport: () => void;
 }
 
 export const OnlineCatalogView: React.FC<OnlineCatalogViewProps> = ({
@@ -37,7 +39,8 @@ export const OnlineCatalogView: React.FC<OnlineCatalogViewProps> = ({
   onOpenProperties,
   onVote,
   onOpenWeImport,
-  onOpenSubmit
+  onOpenSubmit,
+  onOpenLivelyExport
 }) => {
   const [selectedSource, setSelectedSource] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -143,19 +146,27 @@ export const OnlineCatalogView: React.FC<OnlineCatalogViewProps> = ({
           <div className="flex items-center gap-2.5">
             <Globe className="w-5 h-5 text-[#0078d4]" />
             <h1 className="text-xl font-bold text-white tracking-wide">
-              Онлайн каталог живых обоев (Online Catalog)
+              Галерея: Онлайн каталог живых обоев
             </h1>
-            <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#0078d4]/20 text-[#0078d4] font-medium border border-[#0078d4]/30">
-              Мульти-источники
+            <span className="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30">
+              Вместо «Скоро» — РАБОТАЕТ
             </span>
           </div>
           <p className="text-xs text-neutral-400 mt-1 max-w-2xl leading-relaxed">
-            Скачивайте и устанавливайте живые обои из различных источников: Lively Hub, Steam Workshop (Wallpaper Engine), MoeWalls, MyLiveWallpapers и Shadertoy с выбором зеркал загрузки.
+            Полноценный каталог взамен неработающей вкладки «Галерея». Скачивайте обои для вашего установленного Lively Wallpaper и Wallpaper Engine из 5 онлайн-источников.
           </p>
         </div>
 
         {/* Quick action buttons */}
         <div className="flex items-center gap-2">
+          <button
+            onClick={onOpenLivelyExport}
+            className="px-3.5 py-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 text-xs font-semibold flex items-center gap-1.5 transition-all shadow"
+          >
+            <Folder className="w-3.5 h-3.5" />
+            <span>Как перенести в Lively на ПК</span>
+          </button>
+
           <button
             onClick={onOpenWeImport}
             className="px-3.5 py-2 rounded-xl bg-sky-600/20 hover:bg-sky-600/30 text-sky-300 border border-sky-500/40 text-xs font-semibold flex items-center gap-1.5 transition-all shadow"
@@ -169,9 +180,29 @@ export const OnlineCatalogView: React.FC<OnlineCatalogViewProps> = ({
             className="px-3.5 py-2 rounded-xl bg-[#0078d4] hover:bg-[#1084d8] text-white text-xs font-semibold flex items-center gap-1.5 transition-all shadow"
           >
             <Plus className="w-4 h-4" />
-            <span>Добавить обои</span>
+            <span>Добавить</span>
           </button>
         </div>
+      </div>
+
+      {/* Notice Banner explaining why official Lively says Coming Soon */}
+      <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-[#202127] to-sky-950/30 border border-emerald-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs shadow-lg">
+        <div className="space-y-1">
+          <div className="font-semibold text-emerald-300 flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <span>Раздел «Галерея» теперь полностью активен!</span>
+          </div>
+          <p className="text-neutral-300 text-[11px] leading-relaxed">
+            В официальном приложении Lively Wallpaper при открытии вкладки «Галерея» отображается заглушка «Скоро». Здесь этот каталог полностью реализован: вы можете выбирать любые обои, настраивать их и скачивать архивы <code>.zip</code>, которые затем достаточно перетащить мышкой в окно установленного Lively на вашем компьютере.
+          </p>
+        </div>
+
+        <button
+          onClick={onOpenLivelyExport}
+          className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs whitespace-nowrap shadow transition-transform hover:scale-105"
+        >
+          Инструкция по переносу
+        </button>
       </div>
 
       {/* Sources Tabs Bar */}

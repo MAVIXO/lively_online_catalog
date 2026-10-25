@@ -23,6 +23,7 @@ import { OnlineCatalogView } from './components/OnlineCatalogView';
 import { SettingsView } from './components/SettingsView';
 import { ReleasesView } from './components/ReleasesView';
 import { InstallerWizardModal } from './components/InstallerWizardModal';
+import { LivelyLocalExportModal } from './components/LivelyLocalExportModal';
 import {
   Sparkles,
   Filter,
@@ -89,6 +90,7 @@ export const App: React.FC = () => {
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
   const [isWeImportModalOpen, setIsWeImportModalOpen] = useState(false);
   const [isInstallerWizardOpen, setIsInstallerWizardOpen] = useState(false);
+  const [isLivelyExportModalOpen, setIsLivelyExportModalOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Sync state to local storage
@@ -204,6 +206,7 @@ export const App: React.FC = () => {
           totalCatalogCount={wallpapers.length}
           onOpenWeImport={() => setIsWeImportModalOpen(true)}
           onOpenInstallerWizard={() => setIsInstallerWizardOpen(true)}
+          onOpenLivelyExport={() => setIsLivelyExportModalOpen(true)}
         />
 
         {/* Content Viewport */}
@@ -220,6 +223,7 @@ export const App: React.FC = () => {
               onVote={handleVote}
               onOpenWeImport={() => setIsWeImportModalOpen(true)}
               onOpenSubmit={() => setIsSubmitModalOpen(true)}
+              onOpenLivelyExport={() => setIsLivelyExportModalOpen(true)}
             />
           )}
 
@@ -470,6 +474,13 @@ export const App: React.FC = () => {
             setCurrentTab('catalog');
             showToast('Lively Wallpaper v2.1.0 запущен и готов к работе!');
           }}
+        />
+      )}
+
+      {/* Local Installed Lively Export Guide Modal */}
+      {isLivelyExportModalOpen && (
+        <LivelyLocalExportModal
+          onClose={() => setIsLivelyExportModalOpen(false)}
         />
       )}
 
