@@ -4,28 +4,22 @@
   <h2 align="center">Lively Wallpaper</h2>
 </p>
 
-[![GitHub release](https://img.shields.io/github/release/rocksdanister/lively/all.svg)](https://github.com/rocksdanister/lively/releases)
-[![Github all releases](https://img.shields.io/github/downloads/rocksdanister/lively/total.svg)](https://github.com/rocksdanister/lively/releases)
-[![GitHub stars](https://img.shields.io/github/stars/rocksdanister/lively.svg)](https://github.com/rocksdanister/lively/stargazers)
+## Fork
+This fork is do a Ai
+Do the Catalog of wallpaper from different sources and support wallpapers from Wallpaper Engine
+
+
 [![Documentation](https://img.shields.io/badge/Docs-WIP-red.svg)](https://github.com/rocksdanister/lively/wiki)
-[![Issues](https://img.shields.io/github/issues/rocksdanister/lively.svg)](https://github.com/rocksdanister/lively/issues)
 [![Crowdin](https://badges.crowdin.net/lively-wallpaper/localized.svg)](https://crowdin.com/project/lively-wallpaper)
 
 ## Contents
 - [About](#about)
 - [Features](#features)
-- [Download](#download)
 - [Support](#support)
 - [License](#license)
 
 ## About
 <img src="/resources/main_preview.gif" width="600" height="338"/>
-
-Animated desktop wallpapers, bring your desktop to life!
-
-#### Join Discussions:
-* <a href="https://www.reddit.com/r/LivelyWallpaper/">Reddit</a>
-* <a href="https://github.com/rocksdanister/lively/discussions/">Github</a>
 
 ## Features
 *Wait a sec, preview gif clips take some time to load.*
@@ -72,16 +66,6 @@ Animated desktop wallpapers, bring your desktop to life!
  * Set wallpaper playback rules based on running foreground application.
  * Can be set to pause wallpaper when running on battery power (laptops.)
  * Wallpaper automatically pauses when running remote desktop session.
-
-**_Lively is not officially affiliated with Unity technologies, godot, shadertoy;_**
-## Download
-##### Microsoft Store (Windows 10 1809 or above)
-
-[<img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft" width="142px" height="52px">](https://apps.microsoft.com/store/detail/9NTM2QC6QWS7)
-
-##### [Installer (Windows 10 1903 or above)](https://github.com/rocksdanister/lively/releases/latest)
-
-[Which version do I download?](https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions)
 
 ## Support
 Are you a Lively fan and want to help out? here are some options..
