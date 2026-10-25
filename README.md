@@ -4,13 +4,18 @@
   <h2 align="center">Lively Wallpaper</h2>
 </p>
 
-## Fork
-This fork is do a Ai
-Do the Catalog of wallpaper from different sources and support wallpapers from Wallpaper Engine
+## Fork Features & Download
+Этот форк добавляет:
+- **Онлайн-каталог живых обоев** (MoeWalls, MyLiveWallpapers, Shadertoy, Steam Workshop, Lively Gallery).
+- **Совместимость с Wallpaper Engine** (импорт/экспорт `project.json`, Steam Workshop ID, pkg/mp4).
+- **Полноценный установщик для Windows (.exe)**.
 
+### 📥 Как скачать и установить:
+1. **Быстрая загрузка на Windows (1 клик):** запустите скрипт `download_setup.bat` в корневой папке. Он автоматически скачает и запустит `Lively.Setup.x64.v2.1.0.exe` (208 МБ).
+2. **Прямое скачивание установщика:** [Lively.Setup.x64.exe (GitHub Official / 208 МБ)](https://github.com/rocksdanister/lively/releases/download/v2.1.0.0/Lively.Setup.x64.exe).
+3. **Через веб-приложение:** откройте вкладку **«Релизы»** в запущенном веб-приложении и нажмите **«Скачать установщик (.exe)»**.
 
-[![Documentation](https://img.shields.io/badge/Docs-WIP-red.svg)](https://github.com/rocksdanister/lively/wiki)
-[![Crowdin](https://badges.crowdin.net/lively-wallpaper/localized.svg)](https://crowdin.com/project/lively-wallpaper)
+> **Примечание:** На GitHub бинарные `.exe` файлы размером более 100 МБ хранятся не в списке файлов кода, а во вкладке [Releases](https://github.com/MAVIXO/lively_online_catalog/releases).
 
 ## Contents
 - [About](#about)

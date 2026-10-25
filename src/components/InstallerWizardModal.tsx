@@ -73,34 +73,12 @@ export const InstallerWizardModal: React.FC<InstallerWizardModalProps> = ({
 
   // Actual browser download of the installer package
   const handleDownloadActualInstaller = () => {
-    const installerBatchContent = `@echo off
-title Lively Wallpaper v2.1.0 Setup Installer
-echo ================================================================
-echo       Lively Wallpaper v2.1.0 - Windows 10/11 Setup
-echo   With Online Catalog & Wallpaper Engine Workshop Compatibility
-echo ================================================================
-echo.
-echo Target Directory: ${installPath}
-echo Installing components:
-echo  - Lively Desktop Core Engine
-echo  - Hardware Accelerated MPV Player
-echo  - Wallpaper Engine Bridge (Steam Workshop support)
-echo  - Windows Screensaver Module
-echo.
-echo Launching Lively Wallpaper...
-start https://github.com/rocksdanister/lively/releases/latest
-pause
-`;
-
-    const blob = new Blob([installerBatchContent], { type: 'application/octet-stream' });
-    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Lively.Setup.x64.v2.1.0.cmd';
+    a.href = '/releases/Lively.Setup.x64.v2.1.0.exe';
+    a.download = 'Lively.Setup.x64.v2.1.0.exe';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(url);
   };
 
   return (

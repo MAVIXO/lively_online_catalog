@@ -34,6 +34,18 @@ export const ReleasesView: React.FC<ReleasesViewProps> = ({
   };
 
   const handleDownloadAsset = (filename: string, contentDescription: string) => {
+    if (filename === 'Lively.Setup.x64.v2.1.0.exe') {
+      const a = document.createElement('a');
+      a.href = '/releases/Lively.Setup.x64.v2.1.0.exe';
+      a.download = 'Lively.Setup.x64.v2.1.0.exe';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setDownloadNotice(`Загрузка официального инсталлятора "${filename}" (208 МБ) началась!`);
+      setTimeout(() => setDownloadNotice(null), 4000);
+      return;
+    }
+
     // Generate actual downloadable payload
     const fileContent = `# Lively Wallpaper Official Release Asset
 Filename: ${filename}
@@ -267,7 +279,7 @@ GitHub: https://github.com/rocksdanister/lively/releases/latest
         </div>
 
         {/* Installation Instructions */}
-        <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-2 text-[11px] text-neutral-400">
+        <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-3 text-[11px] text-neutral-400">
           <div className="font-semibold text-neutral-300 flex items-center gap-1.5">
             <Terminal className="w-3.5 h-3.5 text-[#0078d4]" />
             <span>Установка через терминал Windows (Winget):</span>
@@ -280,6 +292,47 @@ GitHub: https://github.com/rocksdanister/lively/releases/latest
             >
               <Copy className="w-3.5 h-3.5" />
             </button>
+          </div>
+        </div>
+
+        {/* Why EXE is not in standard GitHub files view */}
+        <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/25 space-y-3 text-[11px]">
+          <div className="flex items-center gap-2 text-amber-300 font-semibold text-xs">
+            <ShieldCheck className="w-4 h-4 text-amber-400" />
+            <span>Почему .exe файла нет в списке обычных файлов кода на GitHub?</span>
+          </div>
+          <div className="space-y-2 text-neutral-300 leading-relaxed">
+            <p>
+              <strong>1. Лимит GitHub на размер файла (100 МБ):</strong> Настоящий установщик Lively Wallpaper весит <strong>208 МБ</strong>. Сервис GitHub технически <em>запрещает</em> загружать файлы более 100 МБ напрямую в дерево файлов (коммиты) и автоматически отклоняет их при <code>git push</code>.
+            </p>
+            <p>
+              <strong>2. Где на GitHub хранятся файлы .EXE:</strong> По правилам GitHub, все готовые исполняемые установщики (.exe, .msi, .zip) размещаются не в коде, а в специальной вкладке <strong>Releases (Релизы)</strong> справа на странице вашего репозитория.
+            </p>
+            <p>
+              <strong>3. Как скачать .exe прямо сейчас:</strong>
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+              <button
+                onClick={() => handleDownloadAsset('Lively.Setup.x64.v2.1.0.exe', 'Full Inno Setup')}
+                className="p-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold flex items-center justify-center gap-2 text-xs transition-colors"
+              >
+                <Download className="w-4 h-4" />
+                <span>Скачать Lively.Setup.x64.v2.1.0.exe (208 МБ)</span>
+              </button>
+              <a
+                href="https://github.com/rocksdanister/lively/releases/download/v2.1.0.0/Lively.Setup.x64.exe"
+                target="_blank"
+                rel="noreferrer"
+                className="p-2.5 rounded-lg bg-white/10 hover:bg-white/15 text-white font-medium flex items-center justify-center gap-2 text-xs transition-colors border border-white/10"
+              >
+                <ExternalLink className="w-4 h-4 text-sky-400" />
+                <span>Прямая ссылка на GitHub Release (.exe)</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="pt-2 border-t border-amber-500/20 text-neutral-400 text-[10px]">
+            💡 В репозиторий также добавлен скрипт <strong><code>download_setup.bat</code></strong>. Достаточно запустить его на компьютере двойным кликом — он автоматически скачает и запустит установщик!
           </div>
         </div>
       </div>

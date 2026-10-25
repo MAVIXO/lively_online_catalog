@@ -15,8 +15,9 @@
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
+# Exclude huge binaries > 100MB from git (GitHub limit), but keep release scripts and notes
+[Rr]elease/*.exe
+[Rr]eleases/*.exe
 x64/
 x86/
 bld/

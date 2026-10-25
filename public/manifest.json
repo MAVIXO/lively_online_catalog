@@ -1,0 +1,22 @@
+{
+  "name": "Lively Wallpaper Online Catalog",
+  "short_name": "Lively Catalog",
+  "description": "Онлайн каталог и галерея живых обоев для Lively Wallpaper и Wallpaper Engine",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1c1d22",
+  "theme_color": "#0078d4",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-lively-300.png",
+      "sizes": "300x300",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/appicon_538.png",
+      "sizes": "538x538",
+      "type": "image/png"
+    }
+  ]
+}
